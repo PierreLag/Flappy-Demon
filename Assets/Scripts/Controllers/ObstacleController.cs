@@ -15,12 +15,15 @@ public class ObstacleController : MonoBehaviour
     [SerializeField]
     private TriggeredEvent OnTriggerEnterCustom;
     [SerializeField]
+    private bool isStatic;
+    [SerializeField]
     private float movementDuration;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.DOMoveX(ObstacleSpawner.GetDestination().position.x, movementDuration).SetEase(Ease.Linear);
+        if (!isStatic)
+            transform.DOMoveX(ObstacleSpawner.GetDestination().position.x, movementDuration).SetEase(Ease.Linear);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
